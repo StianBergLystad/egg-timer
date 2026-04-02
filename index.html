@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="no" id="htmlRoot">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,141 +36,50 @@
   <style>
     /* ══════════════════════════════════════════════
        CSS Custom Properties — default egg/amber theme
-       Override per høytid via body[data-theme="X"]
        ══════════════════════════════════════════════ */
     :root {
-      --bg1: #fff8e1;
-      --bg2: #fff3cd;
-      --bg3: #ffe082;
-      --card: #ffffff;
-      --surface: #fffde7;
-      --border: #ffe082;
-      --bar-bg: #fff3cd;
-      --p-lite: #ffd54f;
-      --p-mid:  #f9a825;
-      --p-warm: #fb8c00;
-      --p-pale: #ffecb3;
-      --ring1:  #ffe082;
-      --ring2:  #f9a825;
-      --ring3:  #fb8c00;
-      --txt-head: #b8860b;
-      --txt-dark: #7a5c00;
-      --txt-mid:  #a08020;
-      --txt-soft: #b8a040;
-      --txt-mute: #c8a020;
-      --txt-btn:  #5c3d00;
-      --shd-card:   rgba(255,180,0,0.18);
-      --shd-btn:    rgba(249,168,37,0.4);
+      --bg1: #fff8e1; --bg2: #fff3cd; --bg3: #ffe082;
+      --card: #ffffff; --surface: #fffde7; --border: #ffe082; --bar-bg: #fff3cd;
+      --p-lite: #ffd54f; --p-mid: #f9a825; --p-warm: #fb8c00; --p-pale: #ffecb3;
+      --ring1: #ffe082; --ring2: #f9a825; --ring3: #fb8c00;
+      --txt-head: #b8860b; --txt-dark: #7a5c00; --txt-mid: #a08020;
+      --txt-soft: #b8a040; --txt-mute: #c8a020; --txt-btn: #5c3d00;
+      --shd-card: rgba(255,180,0,0.18); --shd-btn: rgba(249,168,37,0.4);
       --shd-active: rgba(249,168,37,0.35);
     }
-
-    /* ── Påske: vår-grønn ── */
     body[data-theme="paaske"] {
-      --bg1: #f9fbe7;
-      --bg2: #f1f8e9;
-      --bg3: #dcedc8;
-      --surface: #f1f8e9;
-      --border: #c5e1a5;
-      --bar-bg: #f1f8e9;
-      --p-lite: #69a33e;
-      --p-mid:  #4a7c20;
-      --p-warm: #33691e;
-      --p-pale: #dcedc8;
-      --ring1:  #b5d97a;
-      --ring2:  #7cb342;
-      --ring3:  #558b2f;
-      --txt-head: #2e5a10;
-      --txt-dark: #3d6e18;
-      --txt-mid:  #4a7c20;
-      --txt-soft: #6a9b30;
-      --txt-mute: #558b2f;
-      --txt-btn:  #ffffff;
-      --shd-card:   rgba(74,124,32,0.15);
-      --shd-btn:    rgba(74,124,32,0.5);
-      --shd-active: rgba(74,124,32,0.38);
+      --bg1:#f9fbe7;--bg2:#f1f8e9;--bg3:#dcedc8;--surface:#f1f8e9;--border:#c5e1a5;--bar-bg:#f1f8e9;
+      --p-lite:#69a33e;--p-mid:#4a7c20;--p-warm:#33691e;--p-pale:#dcedc8;
+      --ring1:#b5d97a;--ring2:#7cb342;--ring3:#558b2f;
+      --txt-head:#2e5a10;--txt-dark:#3d6e18;--txt-mid:#4a7c20;
+      --txt-soft:#6a9b30;--txt-mute:#558b2f;--txt-btn:#ffffff;
+      --shd-card:rgba(74,124,32,0.15);--shd-btn:rgba(74,124,32,0.5);--shd-active:rgba(74,124,32,0.38);
     }
-
-    /* ── Jul: julerød ── */
     body[data-theme="jul"] {
-      --bg1: #fff8f0;
-      --bg2: #ffece0;
-      --bg3: #ffd5b4;
-      --surface: #fff5eb;
-      --border: #ffccaa;
-      --bar-bg: #ffece0;
-      --p-lite: #e57373;
-      --p-mid:  #c62828;
-      --p-warm: #b71c1c;
-      --p-pale: #ffcdd2;
-      --ring1:  #ef9a9a;
-      --ring2:  #e53935;
-      --ring3:  #b71c1c;
-      --txt-head: #b71c1c;
-      --txt-dark: #7f1717;
-      --txt-mid:  #8b2222;
-      --txt-soft: #c0392b;
-      --txt-mute: #b71c1c;
-      --txt-btn:  #ffffff;
-      --shd-card:   rgba(198,40,40,0.15);
-      --shd-btn:    rgba(198,40,40,0.45);
-      --shd-active: rgba(198,40,40,0.35);
+      --bg1:#fff8f0;--bg2:#ffece0;--bg3:#ffd5b4;--surface:#fff5eb;--border:#ffccaa;--bar-bg:#ffece0;
+      --p-lite:#e57373;--p-mid:#c62828;--p-warm:#b71c1c;--p-pale:#ffcdd2;
+      --ring1:#ef9a9a;--ring2:#e53935;--ring3:#b71c1c;
+      --txt-head:#b71c1c;--txt-dark:#7f1717;--txt-mid:#8b2222;
+      --txt-soft:#c0392b;--txt-mute:#b71c1c;--txt-btn:#ffffff;
+      --shd-card:rgba(198,40,40,0.15);--shd-btn:rgba(198,40,40,0.45);--shd-active:rgba(198,40,40,0.35);
     }
-
-    /* ── 17. mai: norsk blå + rød ── */
     body[data-theme="mai17"] {
-      --bg1: #e3f2fd;
-      --bg2: #bbdefb;
-      --bg3: #90caf9;
-      --surface: #e8f4fd;
-      --border: #90caf9;
-      --bar-bg: #bbdefb;
-      --p-lite: #ef9a9a;
-      --p-mid:  #c62828;
-      --p-warm: #b71c1c;
-      --p-pale: #ffcdd2;
-      --ring1:  #ef9a9a;
-      --ring2:  #e53935;
-      --ring3:  #b71c1c;
-      --txt-head: #0d47a1;
-      --txt-dark: #0d47a1;
-      --txt-mid:  #1565c0;
-      --txt-soft: #1e88e5;
-      --txt-mute: #1565c0;
-      --txt-btn:  #ffffff;
-      --shd-card:   rgba(33,150,243,0.15);
-      --shd-btn:    rgba(198,40,40,0.45);
-      --shd-active: rgba(198,40,40,0.35);
+      --bg1:#e3f2fd;--bg2:#bbdefb;--bg3:#90caf9;--surface:#e8f4fd;--border:#90caf9;--bar-bg:#bbdefb;
+      --p-lite:#ef9a9a;--p-mid:#c62828;--p-warm:#b71c1c;--p-pale:#ffcdd2;
+      --ring1:#ef9a9a;--ring2:#e53935;--ring3:#b71c1c;
+      --txt-head:#0d47a1;--txt-dark:#0d47a1;--txt-mid:#1565c0;
+      --txt-soft:#1e88e5;--txt-mute:#1565c0;--txt-btn:#ffffff;
+      --shd-card:rgba(33,150,243,0.15);--shd-btn:rgba(198,40,40,0.45);--shd-active:rgba(198,40,40,0.35);
     }
-
-    /* ── Pinse: himmelsblå ── */
     body[data-theme="pinse"] {
-      --bg1: #e1f5fe;
-      --bg2: #b3e5fc;
-      --bg3: #81d4fa;
-      --surface: #e8f6ff;
-      --border: #81d4fa;
-      --bar-bg: #b3e5fc;
-      --p-lite: #4fc3f7;
-      --p-mid:  #0277bd;
-      --p-warm: #01579b;
-      --p-pale: #b3e5fc;
-      --ring1:  #b3e5fc;
-      --ring2:  #0288d1;
-      --ring3:  #01579b;
-      --txt-head: #01579b;
-      --txt-dark: #01579b;
-      --txt-mid:  #0277bd;
-      --txt-soft: #0288d1;
-      --txt-mute: #0277bd;
-      --txt-btn:  #ffffff;
-      --shd-card:   rgba(2,119,189,0.15);
-      --shd-btn:    rgba(2,119,189,0.5);
-      --shd-active: rgba(2,119,189,0.38);
+      --bg1:#e1f5fe;--bg2:#b3e5fc;--bg3:#81d4fa;--surface:#e8f6ff;--border:#81d4fa;--bar-bg:#b3e5fc;
+      --p-lite:#4fc3f7;--p-mid:#0277bd;--p-warm:#01579b;--p-pale:#b3e5fc;
+      --ring1:#b3e5fc;--ring2:#0288d1;--ring3:#01579b;
+      --txt-head:#01579b;--txt-dark:#01579b;--txt-mid:#0277bd;
+      --txt-soft:#0288d1;--txt-mute:#0277bd;--txt-btn:#ffffff;
+      --shd-card:rgba(2,119,189,0.15);--shd-btn:rgba(2,119,189,0.5);--shd-active:rgba(2,119,189,0.38);
     }
 
-    /* ══════════════════════════════════════════════
-       Base styles — all colors use CSS variables
-       ══════════════════════════════════════════════ */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     [hidden] { display: none !important; }
 
@@ -178,33 +87,15 @@
       font-family: 'Segoe UI', system-ui, sans-serif;
       background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
       min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      display: flex; align-items: flex-start; justify-content: center;
       padding: 20px 16px 40px;
       transition: background .6s ease;
     }
 
-    /* Decorative overlay (snowflakes / spring floaters) */
-    #deco {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-    .snowflake {
-      position: absolute;
-      top: -2.5rem;
-      animation: snowFall linear infinite;
-      user-select: none;
-    }
-    .springflake {
-      position: absolute;
-      bottom: -2.5rem;
-      animation: springRise linear infinite;
-      user-select: none;
-    }
+    /* Decorative holiday overlay */
+    #deco { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+    .snowflake  { position: absolute; top: -2.5rem; animation: snowFall linear infinite; user-select: none; }
+    .springflake{ position: absolute; bottom: -2.5rem; animation: springRise linear infinite; user-select: none; }
     @keyframes snowFall   { to { transform: translateY(110vh) rotate(360deg); } }
     @keyframes springRise { to { transform: translateY(-110vh) rotate(-180deg); } }
 
@@ -213,373 +104,199 @@
       border-radius: 32px;
       box-shadow: 0 8px 40px var(--shd-card), 0 2px 8px rgba(0,0,0,0.07);
       padding: 32px 24px 36px;
-      max-width: 400px;
-      width: 100%;
+      max-width: 400px; width: 100%;
       text-align: center;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       transition: box-shadow .6s ease;
     }
 
-    /* ── Title ── */
-    .app-title {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--txt-head);
-      letter-spacing: -0.5px;
-      margin-bottom: 3px;
-      transition: color .4s;
-    }
-    .app-subtitle {
-      font-size: 0.88rem;
+    /* ── Language toggle ── */
+    .btn-lang {
+      position: absolute;
+      top: 18px; right: 20px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 11px;
+      font-size: 0.74rem; font-weight: 700;
       color: var(--txt-mid);
-      margin-bottom: 10px;
-      transition: color .4s;
+      cursor: pointer;
+      transition: background .15s, border-color .15s;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
     }
+    .btn-lang:hover { background: var(--bar-bg); border-color: var(--p-mid); }
+    .btn-lang:active { transform: scale(.95); }
+
+    /* ── Title ── */
+    .app-title { font-size: 1.9rem; font-weight: 800; color: var(--txt-head); letter-spacing: -.5px; margin-bottom: 3px; transition: color .4s; }
+    .app-subtitle { font-size: 0.88rem; color: var(--txt-mid); margin-bottom: 10px; transition: color .4s; }
 
     /* ── Holiday banner ── */
     .holiday-banner {
-      background: var(--p-pale);
-      border: 1.5px solid var(--border);
-      border-radius: 20px;
-      padding: 7px 16px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--txt-head);
-      margin-bottom: 18px;
-      display: inline-block;
+      background: var(--p-pale); border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 7px 16px;
+      font-size: .85rem; font-weight: 700; color: var(--txt-head);
+      margin-bottom: 18px; display: inline-block;
       animation: popIn .5s cubic-bezier(.34,1.56,.64,1);
       transition: background .4s, color .4s, border-color .4s;
     }
 
     /* ── Egg-type buttons ── */
-    .egg-types {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+    .egg-types { display: flex; gap: 10px; margin-bottom: 20px; }
     .egg-btn {
-      flex: 1;
-      border: 2.5px solid var(--border);
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 16px 6px 12px;
-      cursor: pointer;
+      flex: 1; border: 2.5px solid var(--border); background: var(--surface);
+      border-radius: 20px; padding: 16px 6px 12px; cursor: pointer;
       transition: transform .15s, box-shadow .15s, background .3s, border-color .3s;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
+      outline: none; -webkit-tap-highlight-color: transparent;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
     }
     .egg-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px var(--shd-card); }
     .egg-btn.active {
       border-color: var(--p-mid);
       background: linear-gradient(145deg, var(--bg1), var(--p-pale));
-      box-shadow: 0 4px 18px var(--shd-active);
-      transform: translateY(-2px);
+      box-shadow: 0 4px 18px var(--shd-active); transform: translateY(-2px);
     }
     .egg-btn .icon  { font-size: 2.2rem; line-height: 1; }
-    .egg-btn .label { font-size: 0.79rem; font-weight: 700; color: var(--txt-dark); }
-    .egg-btn .mins  { font-size: 0.74rem; color: var(--txt-soft); font-weight: 600; transition: color .2s; }
+    .egg-btn .label { font-size: .79rem; font-weight: 700; color: var(--txt-dark); }
+    .egg-btn .mins  { font-size: .74rem; color: var(--txt-soft); font-weight: 600; transition: color .2s; }
     .egg-btn.active .mins { color: var(--p-warm); }
 
-    /* ── Settings panel ── */
+    /* ── Settings ── */
     .settings {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 18px;
-      padding: 14px 16px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 18px; padding: 14px 16px; margin-bottom: 20px;
+      display: flex; flex-direction: column; gap: 12px;
       transition: background .4s, border-color .4s;
     }
     .setting-row { display: flex; align-items: center; gap: 10px; }
-    .setting-lbl {
-      font-size: 0.73rem;
-      font-weight: 700;
-      color: var(--txt-mid);
-      white-space: nowrap;
-      width: 68px;
-      text-align: left;
-    }
+    .setting-lbl { font-size: .73rem; font-weight: 700; color: var(--txt-mid); white-space: nowrap; width: 68px; text-align: left; }
     .pill-group { display: flex; gap: 6px; flex: 1; }
     .pill {
-      flex: 1;
-      padding: 9px 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      background: var(--card);
-      color: var(--txt-mid);
-      cursor: pointer;
+      flex: 1; padding: 9px 4px; font-size: .75rem; font-weight: 600;
+      border: 2px solid var(--border); border-radius: 12px;
+      background: var(--card); color: var(--txt-mid); cursor: pointer;
       transition: background .15s, border-color .15s, color .15s, transform .1s;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-      line-height: 1.25;
+      outline: none; -webkit-tap-highlight-color: transparent; line-height: 1.25;
     }
     .pill:active { transform: scale(.96); }
     .pill.active {
       background: linear-gradient(135deg, var(--p-lite), var(--p-mid));
-      border-color: var(--p-mid);
-      color: var(--txt-btn);
+      border-color: var(--p-mid); color: var(--txt-btn);
       box-shadow: 0 2px 8px var(--shd-btn);
     }
-    .pill .pill-sub { display: block; font-size: 0.65rem; opacity: .75; font-weight: 500; }
+    .pill .pill-sub { display: block; font-size: .65rem; opacity: .75; font-weight: 500; }
 
     /* ── Formula hint ── */
-    .formula-hint {
-      font-size: 0.72rem;
-      color: var(--txt-soft);
-      margin-bottom: 16px;
-      min-height: 1.2em;
-      font-style: italic;
-      transition: color .4s;
-    }
+    .formula-hint { font-size: .72rem; color: var(--txt-soft); margin-bottom: 16px; min-height: 1.2em; font-style: italic; transition: color .4s; }
 
     /* ── Done alert ── */
     .done-alert {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
+      display: none; flex-direction: column; align-items: center; gap: 6px;
       background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      border: 2px solid var(--p-mid);
-      border-radius: 20px;
-      padding: 20px 16px;
-      margin-bottom: 20px;
+      border: 2px solid var(--p-mid); border-radius: 20px;
+      padding: 20px 16px; margin-bottom: 20px;
       animation: popIn .4s cubic-bezier(.34,1.56,.64,1);
     }
     .done-alert.visible { display: flex; }
     .done-icon { font-size: 2.8rem; animation: bounce .6s ease infinite alternate; }
     .done-text { font-size: 1.25rem; font-weight: 800; color: var(--txt-head); }
-    .done-sub  { font-size: 0.83rem; color: var(--txt-mid); }
+    .done-sub  { font-size: .83rem; color: var(--txt-mid); }
 
     /* ── Timer ring ── */
     .timer-section { margin-bottom: 16px; }
-    .timer-ring-wrap {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-    .timer-svg {
-      transform: rotate(-90deg);
-      filter: drop-shadow(0 4px 12px var(--shd-active));
-    }
+    .timer-ring-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .timer-svg { transform: rotate(-90deg); filter: drop-shadow(0 4px 12px var(--shd-active)); }
     .ring-bg { fill: none; stroke: var(--bar-bg); stroke-width: 10; }
-    /* SVG gradient stop colors via CSS — works in all modern browsers */
     .rg1 { stop-color: var(--ring1); }
     .rg2 { stop-color: var(--ring2); }
     .rg3 { stop-color: var(--ring3); }
-    .ring-progress {
-      fill: none;
-      stroke: url(#ringGradient);
-      stroke-width: 10;
-      stroke-linecap: round;
-      transition: stroke-dashoffset 1s linear;
-    }
-    .timer-text {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .timer-digits {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: var(--txt-head);
-      letter-spacing: 2px;
-      line-height: 1;
-      transition: color .4s;
-    }
-    .timer-label {
-      font-size: 0.72rem;
-      color: var(--txt-mute);
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-top: 4px;
-      transition: color .4s;
-    }
+    .ring-progress { fill: none; stroke: url(#ringGradient); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+    .timer-text { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .timer-digits { font-size: 2.6rem; font-weight: 800; color: var(--txt-head); letter-spacing: 2px; line-height: 1; transition: color .4s; }
+    .timer-label  { font-size: .72rem; color: var(--txt-mute); font-weight: 600; letter-spacing: 1px; margin-top: 4px; transition: color .4s; }
     .running .timer-digits { animation: pulse 1s ease-in-out infinite; }
 
     /* ── Manual adjust ── */
-    .adjust-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 14px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .25s;
-    }
+    .adjust-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 14px; opacity: 0; pointer-events: none; transition: opacity .25s; }
     .adjust-row.visible { opacity: 1; pointer-events: auto; }
     .btn-adj {
-      padding: 9px 13px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface);
-      color: var(--txt-dark);
-      cursor: pointer;
+      padding: 9px 13px; font-size: .8rem; font-weight: 700;
+      border: 2px solid var(--border); border-radius: 12px;
+      background: var(--surface); color: var(--txt-dark); cursor: pointer;
       transition: background .15s, border-color .15s, transform .1s;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-      white-space: nowrap;
+      outline: none; -webkit-tap-highlight-color: transparent; white-space: nowrap;
     }
     .btn-adj:hover  { background: var(--bar-bg); border-color: var(--p-mid); }
     .btn-adj:active { transform: scale(.94); }
     .btn-adj:disabled { opacity: .35; cursor: not-allowed; }
-    .adj-label { font-size: 0.7rem; color: var(--txt-soft); font-weight: 600; white-space: nowrap; }
+    .adj-label { font-size: .7rem; color: var(--txt-soft); font-weight: 600; white-space: nowrap; }
 
     /* ── Progress bar ── */
-    .progress-bar-wrap {
-      background: var(--bar-bg);
-      border-radius: 100px;
-      height: 10px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--ring1), var(--ring2), var(--ring3));
-      border-radius: 100px;
-      width: 0%;
-      transition: width 1s linear;
-    }
+    .progress-bar-wrap { background: var(--bar-bg); border-radius: 100px; height: 10px; overflow: hidden; margin-bottom: 20px; }
+    .progress-bar { height: 100%; background: linear-gradient(90deg, var(--ring1), var(--ring2), var(--ring3)); border-radius: 100px; width: 0%; transition: width 1s linear; }
 
     /* ── Controls ── */
     .controls { display: flex; gap: 12px; }
     .btn-start {
-      flex: 1;
-      padding: 18px;
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 16px;
-      cursor: pointer;
+      flex: 1; padding: 18px; font-size: 1rem; font-weight: 700; border: none;
+      border-radius: 16px; cursor: pointer;
       transition: transform .12s, box-shadow .12s, opacity .2s, background .4s;
-      -webkit-tap-highlight-color: transparent;
-      outline: none;
+      -webkit-tap-highlight-color: transparent; outline: none;
       background: linear-gradient(135deg, var(--p-lite), var(--p-mid));
-      color: var(--txt-btn);
-      box-shadow: 0 4px 16px var(--shd-btn);
+      color: var(--txt-btn); box-shadow: 0 4px 16px var(--shd-btn);
     }
-    .btn-start:active  { transform: scale(.97); }
+    .btn-start:active   { transform: scale(.97); }
     .btn-start:disabled { opacity: .4; cursor: not-allowed; box-shadow: none; }
     .btn-reset {
-      padding: 18px 22px;
-      font-size: 1.1rem;
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      cursor: pointer;
-      background: var(--surface);
-      color: var(--txt-mid);
+      padding: 18px 22px; font-size: 1.1rem; border: 2px solid var(--border);
+      border-radius: 16px; cursor: pointer; background: var(--surface); color: var(--txt-mid);
       transition: background .15s, transform .12s;
-      -webkit-tap-highlight-color: transparent;
-      outline: none;
+      -webkit-tap-highlight-color: transparent; outline: none;
     }
     .btn-reset:active { transform: scale(.97); }
 
     /* ── Williams modal ── */
     .williams-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      padding: 2px 6px;
-      border-radius: 50%;
-      color: var(--txt-mute);
-      vertical-align: middle;
-      transition: transform .15s;
-      -webkit-tap-highlight-color: transparent;
-      outline: none;
+      background: none; border: none; cursor: pointer; font-size: 1rem;
+      padding: 2px 6px; border-radius: 50%; color: var(--txt-mute);
+      vertical-align: middle; transition: transform .15s;
+      -webkit-tap-highlight-color: transparent; outline: none;
     }
     .williams-btn:hover { transform: rotate(20deg) scale(1.2); }
     .modal-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      backdrop-filter: blur(3px);
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45);
+      z-index: 100; align-items: center; justify-content: center;
+      padding: 20px; backdrop-filter: blur(3px);
     }
     .modal-backdrop.open { display: flex; }
     .modal {
-      background: var(--card);
-      border-radius: 28px;
-      padding: 28px 24px 24px;
-      max-width: 360px;
-      width: 100%;
-      box-shadow: 0 12px 50px rgba(0,0,0,0.22);
-      animation: popIn .35s cubic-bezier(.34,1.56,.64,1);
-      position: relative;
+      background: var(--card); border-radius: 28px; padding: 28px 24px 24px;
+      max-width: 360px; width: 100%; box-shadow: 0 12px 50px rgba(0,0,0,.22);
+      animation: popIn .35s cubic-bezier(.34,1.56,.64,1); position: relative;
     }
     .modal-close {
-      position: absolute;
-      top: 14px; right: 16px;
-      background: var(--bar-bg);
-      border: none;
-      border-radius: 50%;
-      width: 32px; height: 32px;
-      font-size: 1rem;
-      cursor: pointer;
-      color: var(--txt-mid);
+      position: absolute; top: 14px; right: 16px; background: var(--bar-bg);
+      border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem;
+      cursor: pointer; color: var(--txt-mid);
       display: flex; align-items: center; justify-content: center;
       -webkit-tap-highlight-color: transparent;
     }
     .modal-close:hover { background: var(--bg3); }
-    .modal h2 { font-size: 1.15rem; color: var(--txt-head); margin-bottom: 4px; }
-    .modal .modal-sub { font-size: 0.78rem; color: var(--txt-mid); margin-bottom: 16px; }
+    .modal h2          { font-size: 1.15rem; color: var(--txt-head); margin-bottom: 4px; }
+    .modal .modal-sub  { font-size: .78rem; color: var(--txt-mid); margin-bottom: 16px; }
     .formula-box {
       background: linear-gradient(135deg, var(--surface), var(--bg1));
-      border: 1.5px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 14px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.82rem;
-      color: var(--txt-dark);
-      line-height: 1.9;
-      text-align: left;
+      border: 1.5px solid var(--border); border-radius: 14px; padding: 14px;
+      margin-bottom: 14px; font-family: 'Courier New', monospace;
+      font-size: .82rem; color: var(--txt-dark); line-height: 1.9; text-align: left;
     }
-    .formula-box .f-main {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--txt-head);
-      display: block;
-      margin-bottom: 6px;
-    }
-    .formula-box .f-var { color: #e65100; }
-    .formula-box .f-comment { color: var(--txt-mid); font-style: italic; font-size: 0.75rem; }
-    .modal-joke {
-      background: var(--bar-bg);
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 0.82rem;
-      color: var(--txt-dark);
-      line-height: 1.5;
-      text-align: left;
-    }
-    .modal-joke .joke-head {
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--txt-head);
-      display: block;
-      margin-bottom: 4px;
-    }
-    .modal-source { margin-top: 12px; font-size: 0.7rem; color: var(--txt-soft); text-align: center; }
+    .formula-box .f-main    { font-size: 1rem; font-weight: 700; color: var(--txt-head); display: block; margin-bottom: 6px; }
+    .formula-box .f-var     { color: #e65100; }
+    .formula-box .f-comment { color: var(--txt-mid); font-style: italic; font-size: .75rem; }
+    .modal-joke       { background: var(--bar-bg); border-radius: 12px; padding: 12px 14px; font-size: .82rem; color: var(--txt-dark); line-height: 1.5; text-align: left; }
+    .modal-joke .joke-head { font-weight: 700; font-size: .85rem; color: var(--txt-head); display: block; margin-bottom: 4px; }
+    .modal-source     { margin-top: 12px; font-size: .7rem; color: var(--txt-soft); text-align: center; }
 
     /* ── Animations ── */
     @keyframes popIn  { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -588,18 +305,19 @@
   </style>
 </head>
 <body>
-
-<!-- Decorative holiday elements (populated by JS) -->
 <div id="deco" aria-hidden="true"></div>
 
 <div class="app">
-  <div class="app-title" id="appTitle">🥚 Egg-Timer</div>
+  <!-- Language toggle -->
+  <button class="btn-lang" id="btnLang" onclick="toggleLang()">🇬🇧 EN</button>
+
+  <div class="app-title">🥚 Egg-Timer</div>
   <div class="app-subtitle">
-    <span id="subtitleText">Velg type, størrelse og starttemperatur</span>
-    <button class="williams-btn" onclick="openWilliams()" title="Hva er Williams-formelen?">🔬</button>
+    <span id="subtitleText" data-i18n="subtitle">Velg type, størrelse og starttemperatur</span>
+    <button class="williams-btn" onclick="openWilliams()" title="Williams-formelen">🔬</button>
   </div>
 
-  <!-- Holiday banner (shown only during Norwegian holidays) -->
+  <!-- Holiday banner -->
   <div class="holiday-banner" id="holidayBanner" hidden>
     <span id="holidayBannerText"></span>
   </div>
@@ -608,17 +326,17 @@
   <div class="egg-types">
     <button class="egg-btn" data-type="soft" onclick="selectType(this)">
       <span class="icon" id="icon-soft">🥚</span>
-      <span class="label">Bløtkokt</span>
+      <span class="label" data-i18n="type.soft.label">Bløtkokt</span>
       <span class="mins" id="lbl-soft">6:00</span>
     </button>
     <button class="egg-btn" data-type="smiling" onclick="selectType(this)">
       <span class="icon" id="icon-smiling">😊</span>
-      <span class="label">Smilende</span>
+      <span class="label" data-i18n="type.smiling.label">Smilende</span>
       <span class="mins" id="lbl-smiling">8:00</span>
     </button>
     <button class="egg-btn" data-type="hard" onclick="selectType(this)">
       <span class="icon" id="icon-hard">💪</span>
-      <span class="label">Hardkokt</span>
+      <span class="label" data-i18n="type.hard.label">Hardkokt</span>
       <span class="mins" id="lbl-hard">10:00</span>
     </button>
   </div>
@@ -626,27 +344,27 @@
   <!-- Settings -->
   <div class="settings">
     <div class="setting-row">
-      <span class="setting-lbl">Størrelse</span>
+      <span class="setting-lbl" data-i18n="size.label">Størrelse</span>
       <div class="pill-group">
-        <button class="pill" data-group="size" data-val="small"  onclick="setSetting(this)">
-          Liten<span class="pill-sub">~50 g</span>
+        <button class="pill" data-group="size" data-val="small" onclick="setSetting(this)">
+          <span data-i18n="size.small">Liten</span><span class="pill-sub">~50 g</span>
         </button>
         <button class="pill active" data-group="size" data-val="medium" onclick="setSetting(this)">
-          Medium<span class="pill-sub">~60 g</span>
+          <span data-i18n="size.medium">Medium</span><span class="pill-sub">~60 g</span>
         </button>
-        <button class="pill" data-group="size" data-val="large"  onclick="setSetting(this)">
-          Stor<span class="pill-sub">~70 g</span>
+        <button class="pill" data-group="size" data-val="large" onclick="setSetting(this)">
+          <span data-i18n="size.large">Stor</span><span class="pill-sub">~70 g</span>
         </button>
       </div>
     </div>
     <div class="setting-row">
-      <span class="setting-lbl">Starttemp</span>
+      <span class="setting-lbl" data-i18n="temp.label">Starttemp</span>
       <div class="pill-group">
         <button class="pill" data-group="temp" data-val="fridge" onclick="setSetting(this)">
-          🧊 Kjøleskap<span class="pill-sub">~4 °C</span>
+          <span data-i18n="temp.fridge">🧊 Kjøleskap</span><span class="pill-sub">~4 °C</span>
         </button>
         <button class="pill active" data-group="temp" data-val="room" onclick="setSetting(this)">
-          🌡️ Romtemp<span class="pill-sub">~20 °C</span>
+          <span data-i18n="temp.room">🌡️ Romtemp</span><span class="pill-sub">~20 °C</span>
         </button>
       </div>
     </div>
@@ -658,8 +376,8 @@
   <!-- Done alert -->
   <div class="done-alert" id="doneAlert">
     <div class="done-icon">✅</div>
-    <div class="done-text">Egget er klart!</div>
-    <div class="done-sub" id="doneSub">Nyt måltidet ditt 🍽️</div>
+    <div class="done-text" data-i18n="done.title">Egget er klart!</div>
+    <div class="done-sub" id="doneSub"></div>
   </div>
 
   <!-- Timer ring -->
@@ -679,7 +397,7 @@
       </svg>
       <div class="timer-text">
         <span class="timer-digits" id="timerDigits">--:--</span>
-        <span class="timer-label"  id="timerLabel">⏳ Klar</span>
+        <span class="timer-label"  id="timerLabel">⏳</span>
       </div>
     </div>
 
@@ -687,7 +405,7 @@
     <div class="adjust-row" id="adjustRow">
       <button class="btn-adj" onclick="adjustTime(-60)" id="adjMinus60">−1 min</button>
       <button class="btn-adj" onclick="adjustTime(-30)" id="adjMinus30">−30 s</button>
-      <span class="adj-label">±&nbsp;tid</span>
+      <span class="adj-label" data-i18n="adj.label">± tid</span>
       <button class="btn-adj" onclick="adjustTime(30)"  id="adjPlus30">+30 s</button>
       <button class="btn-adj" onclick="adjustTime(60)"  id="adjPlus60">+1 min</button>
     </div>
@@ -701,7 +419,7 @@
   <!-- Controls -->
   <div class="controls">
     <button class="btn-start" id="btnStart" onclick="startStop()" disabled>▶ Start</button>
-    <button class="btn-reset" onclick="reset()" title="Nullstill">↺</button>
+    <button class="btn-reset" onclick="reset()">↺</button>
   </div>
 </div>
 
@@ -709,55 +427,233 @@
 <div class="modal-backdrop" id="williamsModal" onclick="closeWilliamsOutside(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeWilliams()">✕</button>
-    <h2>🔬 Williams-formelen</h2>
-    <p class="modal-sub">Den vitenskapelige grunnen til at du ikke trenger å gjette på koketiden</p>
+    <h2 data-i18n="williams.title">🔬 Williams-formelen</h2>
+    <p class="modal-sub" data-i18n="williams.sub">Den vitenskapelige grunnen til at du ikke trenger å gjette på koketiden</p>
     <div class="formula-box">
       <span class="f-main">t = K · <span class="f-var">M</span><sup>2/3</sup> · ln( (<span class="f-var">T<sub>w</sub></span> − <span class="f-var">T<sub>0</sub></span>) / (<span class="f-var">T<sub>w</sub></span> − <span class="f-var">T<sub>y</sub></span>) )</span>
-      <span><span class="f-var">M</span>  = eggmasse (g)</span><br>
-      <span><span class="f-var">T<sub>w</sub></span> = kokende vann = 100 °C</span><br>
-      <span><span class="f-var">T<sub>0</sub></span> = starttemperatur på egget</span><br>
-      <span><span class="f-var">T<sub>y</sub></span> = ønsket plommetemperatur</span><br>
-      <span><span class="f-var">K</span>  = 30.47 <span class="f-comment">(kalibreringskonstant)</span></span>
+      <span><span class="f-var">M</span>  = <span data-i18n="formula.M">eggmasse (g)</span></span><br>
+      <span><span class="f-var">T<sub>w</sub></span> = <span data-i18n="formula.Tw">kokende vann = 100 °C</span></span><br>
+      <span><span class="f-var">T<sub>0</sub></span> = <span data-i18n="formula.T0">starttemperatur på egget</span></span><br>
+      <span><span class="f-var">T<sub>y</sub></span> = <span data-i18n="formula.Ty">ønsket plommetemperatur</span></span><br>
+      <span><span class="f-var">K</span>  = 30.47 <span class="f-comment" data-i18n="formula.K">(kalibreringskonstant)</span></span>
     </div>
     <div class="modal-joke">
-      <span class="joke-head">😂 Sann historie fra universitetet</span>
-      Charles Williams, fysiker ved Universitetet i Exeter, brukte trolig mer tid på å
-      utlede denne formelen enn han noensinne hadde brukt på å koke et egg feil.
-      Moralen? <strong>Noen mennesker kjøper eggeklokke. Andre tar en doktorgrad.</strong>
-      <br><br>
-      Du bruker heldigvis appen hans resultat havnet i. 🥚📐
+      <!-- Safe innerHTML: developer-defined strings, never user input -->
+      <span class="joke-head" data-i18n="joke.head">😂 Sann historie fra universitetet</span>
+      <span id="jokeBody" data-i18n-html="joke.body"></span>
     </div>
-    <p class="modal-source">
-      Basert på: C.D.H. Williams, «The Mathematics of Eggs» · Univ. of Exeter
-    </p>
+    <p class="modal-source" data-i18n="williams.source">Basert på: C.D.H. Williams, «The Mathematics of Eggs» · Univ. of Exeter</p>
   </div>
 </div>
 
 <script>
-  // ── Constants ──────────────────────────────────────────────────────────────
-  const CIRCUMFERENCE = 2 * Math.PI * 75; // ≈ 471.2
+  // ══════════════════════════════════════════════════════════════════════════
+  //  TRANSLATIONS
+  // ══════════════════════════════════════════════════════════════════════════
+  const TRANS = {
+    no: {
+      // subtitle
+      'subtitle': 'Velg type, størrelse og starttemperatur',
+      // egg types
+      'type.soft.label':    'Bløtkokt',
+      'type.smiling.label': 'Smilende',
+      'type.hard.label':    'Hardkokt',
+      'type.soft.msg':      'Bløtt og deilig indre 🥚',
+      'type.smiling.msg':   'Perfekt smilende eggeplomme 😊',
+      'type.hard.msg':      'Gjennomkokt og solid 💪',
+      // settings
+      'size.label':   'Størrelse',
+      'temp.label':   'Starttemp',
+      'size.small':   'Liten',
+      'size.medium':  'Medium',
+      'size.large':   'Stor',
+      'temp.fridge':  '🧊 Kjøleskap',
+      'temp.room':    '🌡️ Romtemp',
+      // formula hint
+      'formula.prefix':  'Williams-formel',
+      'formula.manual':  'manuelt justert',
+      'size.small.hint':  'lite',
+      'size.medium.hint': 'medium',
+      'size.large.hint':  'stort',
+      'temp.fridge.hint': 'kjøleskap (4 °C)',
+      'temp.room.hint':   'romtemperatur (20 °C)',
+      // timer states
+      'timer.ready':   '⏳ Klar',
+      'timer.cooking': '🔥 Koker...',
+      'timer.paused':  '⏸ Pauset',
+      'timer.done':    '✅ Ferdig!',
+      // buttons
+      'btn.start':    '▶ Start',
+      'btn.pause':    '⏸ Pause',
+      'btn.continue': '▶ Fortsett',
+      'adj.label':    '± tid',
+      // done
+      'done.title': 'Egget er klart!',
+      // williams modal
+      'williams.title':  '🔬 Williams-formelen',
+      'williams.sub':    'Den vitenskapelige grunnen til at du ikke trenger å gjette på koketiden',
+      'formula.M':  'eggmasse (g)',
+      'formula.Tw': 'kokende vann = 100 °C',
+      'formula.T0': 'starttemperatur på egget',
+      'formula.Ty': 'ønsket plommetemperatur',
+      'formula.K':  '(kalibreringskonstant)',
+      'joke.head':  '😂 Sann historie fra universitetet',
+      'joke.body':  'Charles Williams, fysiker ved Universitetet i Exeter, brukte trolig mer tid på å utlede denne formelen enn han noensinne hadde brukt på å koke et egg feil. Moralen? <strong>Noen mennesker kjøper eggeklokke. Andre tar en doktorgrad.</strong><br><br>Du bruker heldigvis appen hans resultat havnet i. 🥚📐',
+      'williams.source': 'Basert på: C.D.H. Williams, «The Mathematics of Eggs» · Univ. of Exeter',
+      // holidays
+      'holiday.paaske.banner':   '🐣 God påske!',
+      'holiday.paaske.subtitle': 'Koktiden er (selvsagt) vitenskapelig beregnet 🐣',
+      'holiday.jul.banner':      '🎄 God jul!',
+      'holiday.jul.subtitle':    'Selv julenissen trenger presist kokte egg 🎅',
+      'holiday.mai17.banner':    '🇳🇴 Gratulerer med dagen!',
+      'holiday.mai17.subtitle':  'Kokt i ekte norsk ånd siden 1814 🇳🇴',
+      'holiday.pinse.banner':    '🕊️ God pinse!',
+      'holiday.pinse.subtitle':  'Pinsehøytid med Williams-formelens velsignelse 🕊️',
+      // lang button
+      'lang.toggle': '🇬🇧 EN',
+    },
+    en: {
+      'subtitle': 'Choose type, size and starting temperature',
+      'type.soft.label':    'Soft-boiled',
+      'type.smiling.label': 'Smiling',
+      'type.hard.label':    'Hard-boiled',
+      'type.soft.msg':      'Soft and delicious centre 🥚',
+      'type.smiling.msg':   'Perfect jammy yolk 😊',
+      'type.hard.msg':      'Fully cooked through 💪',
+      'size.label':   'Size',
+      'temp.label':   'Start temp',
+      'size.small':   'Small',
+      'size.medium':  'Medium',
+      'size.large':   'Large',
+      'temp.fridge':  '🧊 Fridge',
+      'temp.room':    '🌡️ Room temp',
+      'formula.prefix':   'Williams formula',
+      'formula.manual':   'manually adjusted',
+      'size.small.hint':  'small',
+      'size.medium.hint': 'medium',
+      'size.large.hint':  'large',
+      'temp.fridge.hint': 'fridge (4 °C)',
+      'temp.room.hint':   'room temperature (20 °C)',
+      'timer.ready':   '⏳ Ready',
+      'timer.cooking': '🔥 Cooking...',
+      'timer.paused':  '⏸ Paused',
+      'timer.done':    '✅ Done!',
+      'btn.start':    '▶ Start',
+      'btn.pause':    '⏸ Pause',
+      'btn.continue': '▶ Continue',
+      'adj.label':    '± time',
+      'done.title': 'Egg is ready!',
+      'williams.title': '🔬 The Williams Formula',
+      'williams.sub':   'The scientific reason you never have to guess the cooking time',
+      'formula.M':  'egg mass (g)',
+      'formula.Tw': 'boiling water = 100 °C',
+      'formula.T0': 'starting temperature of the egg',
+      'formula.Ty': 'desired yolk temperature',
+      'formula.K':  '(calibration constant)',
+      'joke.head':  '😂 A true university story',
+      'joke.body':  'Charles Williams, physicist at the University of Exeter, likely spent more time deriving this formula than he ever had boiling an egg wrong. The moral? <strong>Some people buy an egg timer. Others get a PhD.</strong><br><br>Fortunately, you\'re using the app his result ended up in. 🥚📐',
+      'williams.source': 'Based on: C.D.H. Williams, «The Mathematics of Eggs» · Univ. of Exeter',
+      'holiday.paaske.banner':   '🐣 Happy Easter!',
+      'holiday.paaske.subtitle': 'Cook time is (of course) scientifically calculated 🐣',
+      'holiday.jul.banner':      '🎄 Merry Christmas!',
+      'holiday.jul.subtitle':    'Even Santa needs precisely cooked eggs 🎅',
+      'holiday.mai17.banner':    '🇳🇴 Happy Constitution Day!',
+      'holiday.mai17.subtitle':  'Cooked in true Norwegian spirit since 1814 🇳🇴',
+      'holiday.pinse.banner':    '🕊️ Happy Whitsun!',
+      'holiday.pinse.subtitle':  'Whitsun with the blessing of the Williams formula 🕊️',
+      'lang.toggle': '🇳🇴 NO',
+    }
+  };
 
-  // Williams-formula calibration constant (k), derived so that:
-  //   soft (Ty=63°C), medium (60g), room (20°C) → 360 s (6 min)
+  // Active language (persisted in localStorage)
+  let lang = localStorage.getItem('egg-timer-lang') || 'no';
+
+  function t(key) {
+    return TRANS[lang][key] ?? TRANS['no'][key] ?? key;
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  //  LANGUAGE
+  // ══════════════════════════════════════════════════════════════════════════
+  function applyLang() {
+    // Update html[lang] for accessibility / SEO
+    document.getElementById('htmlRoot').lang = lang;
+
+    // Static elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      el.textContent = t(el.dataset.i18n);
+    });
+    // Elements with HTML content — safe: developer-defined strings only, never user input
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      el.innerHTML = t(el.dataset.i18nHtml);
+    });
+
+    // Language toggle button
+    document.getElementById('btnLang').textContent = t('lang.toggle');
+
+    // Subtitle (can be overridden by holiday)
+    const holidayId = document.body.dataset.theme;
+    document.getElementById('subtitleText').textContent =
+      holidayId ? t('holiday.' + holidayId + '.subtitle') : t('subtitle');
+
+    // Holiday banner text
+    if (holidayId) {
+      document.getElementById('holidayBannerText').textContent =
+        t('holiday.' + holidayId + '.banner');
+    }
+
+    // Dynamic timer label
+    const timerLabel = document.getElementById('timerLabel');
+    if (timerSec.classList.contains('running')) {
+      timerLabel.textContent = t('timer.cooking');
+      btnStart.textContent   = t('btn.pause');
+    } else if (doneAlert.classList.contains('visible')) {
+      timerLabel.textContent = t('timer.done');
+    } else if (remaining > 0 && remaining < totalSeconds) {
+      timerLabel.textContent = t('timer.paused');
+      btnStart.textContent   = t('btn.continue');
+    } else if (currentType) {
+      timerLabel.textContent = t('timer.ready');
+      btnStart.textContent   = t('btn.start');
+    }
+
+    // Done sub message
+    if (doneAlert.classList.contains('visible') && currentType) {
+      document.getElementById('doneSub').textContent = t('type.' + currentType + '.msg');
+    }
+
+    // Formula hint
+    updateFormulaHint();
+  }
+
+  function toggleLang() {
+    lang = lang === 'no' ? 'en' : 'no';
+    localStorage.setItem('egg-timer-lang', lang);
+    applyLang();
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  //  CORE TIMER
+  // ══════════════════════════════════════════════════════════════════════════
+  const CIRCUMFERENCE = 2 * Math.PI * 75;
   const K  = 30.47;
   const Tw = 100;
 
   const EGG_TYPES = {
-    soft:    { Ty: 63, icon: '🥚', label: 'Bløtkokt', msg: 'Bløtt og deilig indre 🥚' },
-    smiling: { Ty: 71, icon: '😊', label: 'Smilende',  msg: 'Perfekt smilende eggeplomme 😊' },
-    hard:    { Ty: 78, icon: '💪', label: 'Hardkokt',  msg: 'Gjennomkokt og solid 💪' }
+    soft:    { Ty: 63 },
+    smiling: { Ty: 71 },
+    hard:    { Ty: 78 }
   };
   const EGG_SIZES = {
-    small:  { mass: 50, label: 'Liten' },
-    medium: { mass: 60, label: 'Medium' },
-    large:  { mass: 70, label: 'Stor' }
+    small:  { mass: 50 },
+    medium: { mass: 60 },
+    large:  { mass: 70 }
   };
   const EGG_TEMPS = {
-    fridge: { T: 4,  label: 'kjøleskap (4 °C)' },
-    room:   { T: 20, label: 'romtemperatur (20 °C)' }
+    fridge: { T: 4  },
+    room:   { T: 20 }
   };
 
-  // ── State ──────────────────────────────────────────────────────────────────
   let currentType  = null;
   let currentSize  = 'medium';
   let currentTemp  = 'room';
@@ -768,35 +664,31 @@
   let audioCtx     = null;
   let manualOffset = 0;
 
-  // ── DOM refs ───────────────────────────────────────────────────────────────
-  const digits      = document.getElementById('timerDigits');
-  const lbl         = document.getElementById('timerLabel');
-  const ring        = document.getElementById('ringProgress');
-  const bar         = document.getElementById('progressBar');
-  const btnStart    = document.getElementById('btnStart');
-  const doneAlert   = document.getElementById('doneAlert');
-  const doneSub     = document.getElementById('doneSub');
-  const timerSec    = document.getElementById('timerSection');
-  const adjustRow   = document.getElementById('adjustRow');
+  const digits    = document.getElementById('timerDigits');
+  const lbl       = document.getElementById('timerLabel');
+  const ring      = document.getElementById('ringProgress');
+  const bar       = document.getElementById('progressBar');
+  const btnStart  = document.getElementById('btnStart');
+  const doneAlert = document.getElementById('doneAlert');
+  const doneSub   = document.getElementById('doneSub');
+  const timerSec  = document.getElementById('timerSection');
+  const adjustRow = document.getElementById('adjustRow');
   const formulaHint = document.getElementById('formulaHint');
 
   ring.style.strokeDasharray  = CIRCUMFERENCE;
   ring.style.strokeDashoffset = CIRCUMFERENCE;
 
-  // ── Formula ────────────────────────────────────────────────────────────────
   function calcSeconds(type, size, tempKey) {
-    const { Ty } = EGG_TYPES[type];
+    const { Ty }  = EGG_TYPES[type];
     const { mass } = EGG_SIZES[size];
-    const T0 = EGG_TEMPS[tempKey].T;
+    const T0      = EGG_TEMPS[tempKey].T;
     return Math.max(30, Math.round(
       K * Math.pow(mass, 2/3) * Math.log((Tw - T0) / (Tw - Ty))
     ));
   }
 
   function formatMM_SS(secs) {
-    const m = Math.floor(secs / 60).toString().padStart(2, '0');
-    const s = (secs % 60).toString().padStart(2, '0');
-    return m + ':' + s;
+    return String(Math.floor(secs / 60)).padStart(2,'0') + ':' + String(secs % 60).padStart(2,'0');
   }
 
   function refreshLabels() {
@@ -806,7 +698,6 @@
     }
   }
 
-  // ── Settings change ────────────────────────────────────────────────────────
   function setSetting(btn) {
     if (running) return;
     const group = btn.dataset.group;
@@ -818,54 +709,43 @@
     if (currentType && !running) {
       manualOffset = 0;
       const secs = calcSeconds(currentType, currentSize, currentTemp);
-      totalSeconds = secs;
-      remaining    = secs;
-      stopTransitions();
-      setRingFraction(1);
+      totalSeconds = secs; remaining = secs;
+      stopTransitions(); setRingFraction(1);
       bar.style.width = '0%';
-      updateDisplay(remaining);
-      updateFormulaHint();
+      updateDisplay(remaining); updateFormulaHint();
     }
   }
 
-  // ── Egg-type selection ─────────────────────────────────────────────────────
   function selectType(btn) {
     if (running) return;
     document.querySelectorAll('.egg-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    currentType  = btn.dataset.type;
-    manualOffset = 0;
-    const secs   = calcSeconds(currentType, currentSize, currentTemp);
-    totalSeconds = secs;
-    remaining    = secs;
-    stopTransitions();
-    setRingFraction(1);
+    currentType = btn.dataset.type; manualOffset = 0;
+    const secs  = calcSeconds(currentType, currentSize, currentTemp);
+    totalSeconds = secs; remaining = secs;
+    stopTransitions(); setRingFraction(1);
     bar.style.width = '0%';
-    updateDisplay(remaining);
-    updateFormulaHint();
+    updateDisplay(remaining); updateFormulaHint();
     doneAlert.classList.remove('visible');
-    lbl.textContent = '⏳ Klar';
+    lbl.textContent = t('timer.ready');
     timerSec.classList.remove('running');
     adjustRow.classList.add('visible');
     btnStart.disabled    = false;
-    btnStart.textContent = '▶ Start';
+    btnStart.textContent = t('btn.start');
     updateAdjButtons();
   }
 
-  // ── Formula hint ──────────────────────────────────────────────────────────
   function updateFormulaHint() {
     if (!currentType) { formulaHint.textContent = ''; return; }
-    const sizeLabel = EGG_SIZES[currentSize].label.toLowerCase();
-    const tempLabel = EGG_TEMPS[currentTemp].label;
-    const baseMin   = formatMM_SS(calcSeconds(currentType, currentSize, currentTemp));
+    const sizeHint = t('size.' + currentSize + '.hint');
+    const tempHint = t('temp.' + currentTemp + '.hint');
+    const baseMin  = formatMM_SS(calcSeconds(currentType, currentSize, currentTemp));
     const offsetStr = manualOffset !== 0
-      ? ` · manuelt justert ${manualOffset > 0 ? '+' : ''}${manualOffset}s`
+      ? ` · ${t('formula.manual')} ${manualOffset > 0 ? '+' : ''}${manualOffset}s`
       : '';
-    formulaHint.textContent =
-      `Williams-formel: ${sizeLabel} egg · ${tempLabel} → ${baseMin}${offsetStr}`;
+    formulaHint.textContent = `${t('formula.prefix')}: ${sizeHint} egg · ${tempHint} → ${baseMin}${offsetStr}`;
   }
 
-  // ── Manual time adjustment ─────────────────────────────────────────────────
   function adjustTime(delta) {
     if (!currentType || remaining <= 0) return;
     remaining    = Math.max(10, remaining    + delta);
@@ -876,8 +756,7 @@
     const fraction = remaining / totalSeconds;
     setRingFraction(fraction);
     bar.style.width = ((1 - fraction) * 100) + '%';
-    updateFormulaHint();
-    updateAdjButtons();
+    updateFormulaHint(); updateAdjButtons();
   }
 
   function updateAdjButtons() {
@@ -887,21 +766,19 @@
     document.getElementById('adjPlus60').disabled  = false;
   }
 
-  // ── Start / Pause ──────────────────────────────────────────────────────────
   function startStop() {
     if (!currentType) return;
     if (running) {
-      clearInterval(interval);
-      running = false;
-      btnStart.textContent = '▶ Fortsett';
-      lbl.textContent = '⏸ Pauset';
+      clearInterval(interval); running = false;
+      btnStart.textContent = t('btn.continue');
+      lbl.textContent = t('timer.paused');
       timerSec.classList.remove('running');
       adjustRow.classList.add('visible');
     } else {
       if (remaining <= 0) return;
       running = true;
-      btnStart.textContent = '⏸ Pause';
-      lbl.textContent = '🔥 Koker...';
+      btnStart.textContent = t('btn.pause');
+      lbl.textContent = t('timer.cooking');
       timerSec.classList.add('running');
       adjustRow.classList.remove('visible');
       bar.style.transition  = 'width 1s linear';
@@ -916,73 +793,56 @@
     const progress = 1 - remaining / totalSeconds;
     setRingFraction(remaining / totalSeconds);
     bar.style.width = (progress * 100) + '%';
-    if (remaining <= 0) {
-      clearInterval(interval);
-      running = false;
-      onDone();
-    }
+    if (remaining <= 0) { clearInterval(interval); running = false; onDone(); }
   }
 
   function onDone() {
     timerSec.classList.remove('running');
-    lbl.textContent = '✅ Ferdig!';
+    lbl.textContent = t('timer.done');
     digits.textContent = '00:00';
-    btnStart.textContent = '▶ Start';
+    btnStart.textContent = t('btn.start');
     btnStart.disabled = true;
     adjustRow.classList.remove('visible');
-    doneSub.textContent = EGG_TYPES[currentType]?.msg ?? 'Nyt måltidet ditt 🍽️';
+    doneSub.textContent = t('type.' + currentType + '.msg');
     doneAlert.classList.add('visible');
-    playBeep();
-    vibrate();
+    playBeep(); vibrate();
   }
 
-  // ── Reset ──────────────────────────────────────────────────────────────────
   function reset() {
     clearInterval(interval);
     running = false; interval = null;
     currentType = null; manualOffset = 0;
-    totalSeconds = 0;  remaining = 0;
+    totalSeconds = 0; remaining = 0;
     document.querySelectorAll('.egg-btn').forEach(b => b.classList.remove('active'));
     digits.textContent = '--:--';
-    lbl.textContent    = '⏳ Klar';
+    lbl.textContent    = '';
     timerSec.classList.remove('running');
     adjustRow.classList.remove('visible');
     formulaHint.textContent = '';
-    stopTransitions();
-    bar.style.width = '0%';
-    setRingFraction(1);
+    stopTransitions(); bar.style.width = '0%'; setRingFraction(1);
     doneAlert.classList.remove('visible');
     btnStart.disabled    = true;
-    btnStart.textContent = '▶ Start';
+    btnStart.textContent = t('btn.start');
     refreshLabels();
   }
 
-  // ── Helpers ────────────────────────────────────────────────────────────────
-  function updateDisplay(secs) {
-    digits.textContent = formatMM_SS(Math.max(0, secs));
-  }
-  function setRingFraction(fraction) {
-    ring.style.strokeDashoffset = CIRCUMFERENCE * (1 - Math.max(0, Math.min(1, fraction)));
-  }
-  function stopTransitions() {
-    bar.style.transition  = 'none';
-    ring.style.transition = 'none';
-  }
+  function updateDisplay(secs) { digits.textContent = formatMM_SS(Math.max(0, secs)); }
+  function setRingFraction(f)  { ring.style.strokeDashoffset = CIRCUMFERENCE * (1 - Math.max(0, Math.min(1, f))); }
+  function stopTransitions()   { bar.style.transition = 'none'; ring.style.transition = 'none'; }
 
   // ── Sound ──────────────────────────────────────────────────────────────────
   function playBeep() {
     try {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      [523, 659, 784, 1047].forEach((freq, i) => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+      [523,659,784,1047].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
         osc.connect(gain); gain.connect(audioCtx.destination);
         osc.type = 'sine'; osc.frequency.value = freq;
-        const t = audioCtx.currentTime + i * 0.22;
-        gain.gain.setValueAtTime(0, t);
-        gain.gain.linearRampToValueAtTime(0.35, t + 0.05);
-        gain.gain.linearRampToValueAtTime(0,    t + 0.20);
-        osc.start(t); osc.stop(t + 0.25);
+        const t_ = audioCtx.currentTime + i * 0.22;
+        gain.gain.setValueAtTime(0, t_);
+        gain.gain.linearRampToValueAtTime(0.35, t_ + 0.05);
+        gain.gain.linearRampToValueAtTime(0,    t_ + 0.20);
+        osc.start(t_); osc.stop(t_ + 0.25);
       });
     } catch(e) {}
   }
@@ -995,158 +855,93 @@
   }, { once: true });
 
   // ── Williams modal ─────────────────────────────────────────────────────────
-  function openWilliams() {
-    document.getElementById('williamsModal').classList.add('open');
-  }
-  function closeWilliams() {
-    document.getElementById('williamsModal').classList.remove('open');
-  }
+  function openWilliams()  { document.getElementById('williamsModal').classList.add('open'); }
+  function closeWilliams() { document.getElementById('williamsModal').classList.remove('open'); }
   function closeWilliamsOutside(e) {
     if (e.target === document.getElementById('williamsModal')) closeWilliams();
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeWilliams(); });
 
   // ══════════════════════════════════════════════════════════════════════════
-  //  NORSK KALENDER — høytidstemaer
+  //  NORWEGIAN HOLIDAY CALENDAR
   // ══════════════════════════════════════════════════════════════════════════
-
-  // Gauss/Anonymous Gregorian algorithm — beregner påskedagen for et gitt år
   function easterDate(year) {
-    const a = year % 19, b = Math.floor(year / 100), c = year % 100;
-    const d = Math.floor(b / 4), e = b % 4;
-    const f = Math.floor((b + 8) / 25);
-    const g = Math.floor((b - f + 1) / 3);
-    const h = (19 * a + b - d - g + 15) % 30;
-    const i = Math.floor(c / 4), k = c % 4;
-    const l = (32 + 2 * e + 2 * i - h - k) % 7;
-    const m = Math.floor((a + 11 * h + 22 * l) / 451);
-    const month = Math.floor((h + l - 7 * m + 114) / 31);
-    const day   = ((h + l - 7 * m + 114) % 31) + 1;
-    return new Date(year, month - 1, day);
+    const a=year%19,b=Math.floor(year/100),c=year%100;
+    const d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25);
+    const g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30;
+    const i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7;
+    const m=Math.floor((a+11*h+22*l)/451);
+    return new Date(year, Math.floor((h+l-7*m+114)/31)-1, ((h+l-7*m+114)%31)+1);
   }
+  function addDays(date, n) { const d=new Date(date); d.setDate(d.getDate()+n); return d; }
 
-  function addDays(date, n) {
-    const d = new Date(date); d.setDate(d.getDate() + n); return d;
-  }
-
-  // Høytidskonfigurasjon
-  const HOLIDAYS = {
-    paaske: {
-      banner:    '🐣 God påske!',
-      subtitle:  'Koktiden er (selvsagt) vitenskapelig beregnet 🐣',
-      titleEmoji:'🐣',
-      themeColor:'#4a7c20',
-      deco:      'spring',
-      icons:     { soft: '🐣', smiling: '🐥', hard: '🐔' }
-    },
-    jul: {
-      banner:    '🎄 God jul!',
-      subtitle:  'Selv julenissen trenger presist kokte egg 🎅',
-      titleEmoji:'🎄',
-      themeColor:'#c62828',
-      deco:      'snow',
-      icons:     { soft: '⛄', smiling: '🎄', hard: '🎅' }
-    },
-    mai17: {
-      banner:    '🇳🇴 Gratulerer med dagen!',
-      subtitle:  'Kokt i ekte norsk ånd siden 1814 🇳🇴',
-      titleEmoji:'🇳🇴',
-      themeColor:'#0d47a1',
-      deco:      null,
-      icons:     { soft: '🇳🇴', smiling: '🎉', hard: '🏆' }
-    },
-    pinse: {
-      banner:    '🕊️ God pinse!',
-      subtitle:  'Pinsehøytid med Williams-formelens velsignelse 🕊️',
-      titleEmoji:'🕊️',
-      themeColor:'#0277bd',
-      deco:      'spring',
-      icons:     { soft: '🌸', smiling: '🕊️', hard: '🌺' }
-    }
+  const HOLIDAY_ICONS = {
+    paaske: { soft:'🐣', smiling:'🐥', hard:'🐔' },
+    jul:    { soft:'⛄', smiling:'🎄', hard:'🎅' },
+    mai17:  { soft:'🇳🇴', smiling:'🎉', hard:'🏆' },
+    pinse:  { soft:'🌸', smiling:'🕊️', hard:'🌺' }
+  };
+  const HOLIDAY_META = {
+    paaske: { themeColor:'#4a7c20', deco:'spring' },
+    jul:    { themeColor:'#c62828', deco:'snow'   },
+    mai17:  { themeColor:'#0d47a1', deco:null      },
+    pinse:  { themeColor:'#0277bd', deco:'spring'  }
+  };
+  const DECO_CFG = {
+    snow:   { items:['❄','❅','❆'], count:14, cls:'snowflake'   },
+    spring: { items:['🌸','🌷','🐣'], count:9, cls:'springflake' }
   };
 
-  // Finn aktiv høytid basert på dagens dato
   function getActiveHoliday() {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const yr     = today.getFullYear();
-    const easter = easterDate(yr);
-
+    const today = new Date(); today.setHours(0,0,0,0);
+    const yr = today.getFullYear(), easter = easterDate(yr);
     const periods = [
-      // Jul: 1. des → 6. jan (dekker også nyttår)
-      { id: 'jul',    start: new Date(yr,   11, 1), end: new Date(yr,   11, 31) },
-      { id: 'jul',    start: new Date(yr-1, 11, 1), end: new Date(yr,    0,  6) },
-      // Påske: Palmesøndag (påske − 7 dager) → 2. påskedag (påske + 1 dag)
-      { id: 'paaske', start: addDays(easter, -7),   end: addDays(easter,  1)   },
-      // 17. mai: Grunnlovsdagen
-      { id: 'mai17',  start: new Date(yr, 4, 17),   end: new Date(yr, 4, 17)   },
-      // Pinse: 1. pinsedag (påske + 49) → 2. pinsedag (påske + 50)
-      { id: 'pinse',  start: addDays(easter, 49),   end: addDays(easter, 50)   },
+      { id:'jul',    start:new Date(yr,11,1),       end:new Date(yr,11,31) },
+      { id:'jul',    start:new Date(yr-1,11,1),     end:new Date(yr,0,6)   },
+      { id:'paaske', start:addDays(easter,-7),      end:addDays(easter,1)  },
+      { id:'mai17',  start:new Date(yr,4,17),       end:new Date(yr,4,17)  },
+      { id:'pinse',  start:addDays(easter,49),      end:addDays(easter,50) },
     ];
-
-    for (const p of periods) {
+    for (const p of periods)
       if (today >= p.start && today <= p.end) return p.id;
-    }
     return null;
   }
 
-  // Anvendt dekorasjon
-  const DECO_CFG = {
-    snow:   { items: ['❄','❅','❆'], count: 14, cls: 'snowflake'   },
-    spring: { items: ['🌸','🌷','🐣'], count:  9, cls: 'springflake' }
-  };
-
   function spawnDeco(type) {
-    const cfg  = DECO_CFG[type];
-    const deco = document.getElementById('deco');
+    const cfg = DECO_CFG[type], deco = document.getElementById('deco');
     for (let i = 0; i < cfg.count; i++) {
       const s = document.createElement('span');
       s.className   = cfg.cls;
       s.textContent = cfg.items[i % cfg.items.length];
-      s.style.left              = `${Math.random() * 100}%`;
-      s.style.animationDelay    = `${Math.random() * 12}s`;
-      s.style.animationDuration = `${8 + Math.random() * 8}s`;
-      s.style.fontSize          = `${0.75 + Math.random() * 0.7}rem`;
-      s.style.opacity           = `${0.2 + Math.random() * 0.3}`;
+      s.style.left              = `${Math.random()*100}%`;
+      s.style.animationDelay    = `${Math.random()*12}s`;
+      s.style.animationDuration = `${8+Math.random()*8}s`;
+      s.style.fontSize          = `${0.75+Math.random()*0.7}rem`;
+      s.style.opacity           = `${0.2+Math.random()*0.3}`;
       deco.appendChild(s);
     }
   }
 
-  // Bruk høytidstema
   function applyHoliday() {
     const id = getActiveHoliday();
     if (!id) return;
-    const h = HOLIDAYS[id];
-
-    // Fargetema på body
-    // Whitelist-validert for å forhindre DOM-injeksjon
-    if (!['paaske', 'jul', 'mai17', 'pinse'].includes(id)) return;
+    if (!['paaske','jul','mai17','pinse'].includes(id)) return; // whitelist
     document.body.dataset.theme = id;
-
-    // Browser-adresselinje-farge (Android Chrome)
-    document.getElementById('themeColorMeta').content = h.themeColor;
-
-    // Banner
-    const banner = document.getElementById('holidayBanner');
-    banner.hidden = false;
-    document.getElementById('holidayBannerText').textContent = h.banner;
-
-    // Undertittel
-    document.getElementById('subtitleText').textContent = h.subtitle;
-
-    // Eggtype-ikoner
-    for (const [type, icon] of Object.entries(h.icons)) {
+    document.getElementById('themeColorMeta').content = HOLIDAY_META[id].themeColor;
+    document.getElementById('holidayBanner').hidden = false;
+    document.getElementById('holidayBannerText').textContent = t('holiday.' + id + '.banner');
+    document.getElementById('subtitleText').textContent = t('holiday.' + id + '.subtitle');
+    for (const [type, icon] of Object.entries(HOLIDAY_ICONS[id])) {
       const el = document.getElementById('icon-' + type);
       if (el) el.textContent = icon;
     }
-
-    // Dekorasjon
-    if (h.deco) spawnDeco(h.deco);
+    if (HOLIDAY_META[id].deco) spawnDeco(HOLIDAY_META[id].deco);
   }
 
   // ── Init ───────────────────────────────────────────────────────────────────
+  applyHoliday();   // sets theme + holiday text first
+  applyLang();      // then applies language (incl. overriding static i18n keys)
   refreshLabels();
-  applyHoliday();
 
   // ── Service Worker ─────────────────────────────────────────────────────────
   if ('serviceWorker' in navigator) {
