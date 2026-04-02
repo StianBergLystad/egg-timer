@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="55%">
+      <stop offset="0%"   stop-color="#fff8e1"/>
+      <stop offset="100%" stop-color="#f9a825"/>
+    </radialGradient>
+    <radialGradient id="yolk" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#ffe57f"/>
+      <stop offset="100%" stop-color="#fb8c00"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#b8860b" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Egg white -->
+  <ellipse cx="256" cy="290" rx="170" ry="185" fill="url(#bg)" filter="url(#shadow)"/>
+  <!-- Egg top (rounder) -->
+  <ellipse cx="256" cy="170" rx="138" ry="145" fill="url(#bg)"/>
+  <!-- Blend seam -->
+  <rect x="118" y="170" width="276" height="120" fill="url(#bg)"/>
+
+  <!-- Yolk -->
+  <circle cx="256" cy="295" r="78" fill="url(#yolk)" opacity="0.95"/>
+  <!-- Yolk shine -->
+  <ellipse cx="232" cy="272" rx="22" ry="14" fill="#fffde7" opacity="0.55" transform="rotate(-20 232 272)"/>
+</svg>
