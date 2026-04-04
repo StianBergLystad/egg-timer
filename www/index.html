@@ -353,6 +353,45 @@
     }
     .btn-dark:hover  { background: var(--bar-bg); border-color: var(--p-mid); }
     .btn-dark:active { transform: scale(.95); }
+
+    /* ── Multi-egg cards ── */
+    .megg-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: 0 2px 8px var(--shd-card);
+    }
+    .megg-card.done { border-color: var(--p-mid); background: var(--surface); }
+    .megg-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+    .megg-label { font-weight:700; font-size:.82rem; color:var(--txt-mid); }
+    .megg-remove { background:none; border:none; color:var(--txt-soft); font-size:1rem; cursor:pointer; padding:0 4px; line-height:1; }
+    .megg-remove:hover { color:var(--p-warm); }
+    .megg-types { display:flex; gap:6px; margin-bottom:7px; }
+    .megg-type-btn {
+      flex:1; padding:5px 4px; border-radius:8px;
+      border:1.5px solid var(--border); background:var(--bar-bg);
+      color:var(--txt-mid); font-size:.72rem; font-weight:700;
+      cursor:pointer; text-align:center; transition:all .15s;
+    }
+    .megg-type-btn.active { background:var(--p-mid); border-color:var(--p-warm); color:var(--txt-btn); }
+    .megg-pills { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:8px; }
+    .megg-pill {
+      padding:3px 10px; border-radius:100px;
+      border:1.5px solid var(--border); background:var(--bar-bg);
+      color:var(--txt-mid); font-size:.7rem; font-weight:700;
+      cursor:pointer; transition:all .15s;
+    }
+    .megg-pill.active { background:var(--p-lite); border-color:var(--p-mid); color:var(--txt-dark); }
+    .megg-countdown {
+      font-size:1.8rem; font-weight:800; color:var(--txt-head);
+      text-align:center; letter-spacing:2px; margin:4px 0;
+    }
+    .megg-card.running .megg-countdown { animation: pulse 1s ease-in-out infinite; }
+    .megg-card.done .megg-countdown { color:var(--p-warm); }
+    .megg-bar-wrap { height:6px; background:var(--bar-bg); border-radius:100px; overflow:hidden; margin-top:4px; }
+    .megg-bar { height:100%; background:linear-gradient(90deg,var(--p-lite),var(--p-warm)); border-radius:100px; transition:width 1s linear; width:0%; }
+    .megg-done-msg { text-align:center; font-size:.78rem; font-weight:700; color:var(--p-warm); margin-top:4px; }
   </style>
 </head>
 <body>
@@ -487,6 +526,19 @@
   <div class="controls">
     <button class="btn-start" id="btnStart" onclick="startStop()" disabled>▶ Start</button>
     <button class="btn-reset" onclick="reset()">↺</button>
+  </div>
+
+  <!-- Multi-egg section -->
+  <div id="multiSection" style="margin-top:14px">
+    <div id="eggCards" style="display:flex;flex-direction:column;gap:10px"></div>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap">
+      <button class="btn-start" id="btnStartAll" onclick="multiStartAll()" style="display:none">▶ Start alle</button>
+      <button class="btn-reset" id="btnResetAll" onclick="multiResetAll()" style="display:none" title="Tilbakestill alle">↺</button>
+      <button class="btn-start" id="btnAddEgg" onclick="multiAddEgg()"
+        style="background:transparent;border:2px dashed var(--p-mid);color:var(--txt-mid);font-size:.9rem;padding:10px 20px">
+        + Legg til egg
+      </button>
+    </div>
   </div>
 </div>
 
@@ -1139,6 +1191,126 @@
       if (el) el.textContent = icon;
     }
     if (HOLIDAY_META[id].deco) spawnDeco(HOLIDAY_META[id].deco);
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  //  MULTI-EGG
+  // ══════════════════════════════════════════════════════════════════════════
+  const multiEggs = [];
+  let multiEggCounter = 0;
+
+  function multiUpdateButtons() {
+    const n = multiEggs.length;
+    document.getElementById('btnStartAll').style.display = n >= 1 ? '' : 'none';
+    document.getElementById('btnResetAll').style.display = n >= 1 ? '' : 'none';
+  }
+
+  function multiAddEgg() {
+    haptic();
+    if (multiEggs.length >= 4) return;
+    multiEggCounter++;
+    const id = multiEggCounter;
+    const egg = { id, type: null, size: 'medium', temp: 'room', total: 0, remaining: 0, interval: null, done: false };
+    multiEggs.push(egg);
+
+    const card = document.createElement('div');
+    card.className = 'megg-card';
+    card.id = 'megg-' + id;
+    card.innerHTML = `
+      <div class="megg-header">
+        <span class="megg-label">🥚 Egg ${id}</span>
+        <button class="megg-remove" onclick="multiRemoveEgg(${id})" title="Fjern">✕</button>
+      </div>
+      <div class="megg-types">
+        <button class="megg-type-btn" data-eid="${id}" data-type="soft"    onclick="multiSetType(${id},'soft')">Bløtkokt</button>
+        <button class="megg-type-btn" data-eid="${id}" data-type="smiling" onclick="multiSetType(${id},'smiling')">Smilende</button>
+        <button class="megg-type-btn" data-eid="${id}" data-type="hard"    onclick="multiSetType(${id},'hard')">Hardkokt</button>
+      </div>
+      <div class="megg-pills">
+        <button class="megg-pill${egg.size==='small'?' active':''}"  data-eid="${id}" data-group="size" data-val="small"  onclick="multiSetPill(${id},'size','small')">Liten</button>
+        <button class="megg-pill${egg.size==='medium'?' active':''}" data-eid="${id}" data-group="size" data-val="medium" onclick="multiSetPill(${id},'size','medium')">Medium</button>
+        <button class="megg-pill${egg.size==='large'?' active':''}"  data-eid="${id}" data-group="size" data-val="large"  onclick="multiSetPill(${id},'size','large')">Stor</button>
+        <button class="megg-pill${egg.temp==='fridge'?' active':''}" data-eid="${id}" data-group="temp" data-val="fridge" onclick="multiSetPill(${id},'temp','fridge')">🧊 Kjøl</button>
+        <button class="megg-pill${egg.temp==='room'?' active':''}"   data-eid="${id}" data-group="temp" data-val="room"   onclick="multiSetPill(${id},'temp','room')">🌡️ Rom</button>
+      </div>
+      <div class="megg-countdown" id="megg-cd-${id}">--:--</div>
+      <div class="megg-bar-wrap"><div class="megg-bar" id="megg-bar-${id}"></div></div>
+      <div class="megg-done-msg" id="megg-done-${id}" style="display:none">✅ Klart!</div>`;
+    document.getElementById('eggCards').appendChild(card);
+    multiUpdateButtons();
+  }
+
+  function multiRemoveEgg(id) {
+    haptic();
+    const idx = multiEggs.findIndex(e => e.id === id);
+    if (idx === -1) return;
+    const egg = multiEggs[idx];
+    if (egg.interval) clearInterval(egg.interval);
+    multiEggs.splice(idx, 1);
+    const card = document.getElementById('megg-' + id);
+    if (card) card.remove();
+    multiUpdateButtons();
+  }
+
+  function multiSetType(id, type) {
+    const egg = multiEggs.find(e => e.id === id);
+    if (!egg || egg.interval) return;
+    haptic();
+    egg.type = type;
+    const card = document.getElementById('megg-' + id);
+    card.querySelectorAll('.megg-type-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.type === type));
+    multiCalc(egg);
+  }
+
+  function multiSetPill(id, group, val) {
+    const egg = multiEggs.find(e => e.id === id);
+    if (!egg || egg.interval) return;
+    haptic();
+    egg[group] = val;
+    const card = document.getElementById('megg-' + id);
+    card.querySelectorAll(`.megg-pill[data-group="${group}"]`).forEach(b =>
+      b.classList.toggle('active', b.dataset.val === val));
+    if (egg.type) multiCalc(egg);
+  }
+
+  function multiCalc(egg) {
+    const secs = calcSeconds(egg.type, egg.size, egg.temp);
+    egg.total = secs; egg.remaining = secs;
+    document.getElementById('megg-cd-' + egg.id).textContent = formatMM_SS(secs);
+    const bar = document.getElementById('megg-bar-' + egg.id);
+    bar.style.transition = 'none'; bar.style.width = '0%';
+  }
+
+  function multiStartAll() {
+    haptic();
+    unlockAudio();
+    const ready = multiEggs.filter(e => e.type && !e.done && !e.interval);
+    if (!ready.length) return;
+    acquireWakeLock();
+    ready.forEach(egg => {
+      const card = document.getElementById('megg-' + egg.id);
+      card.classList.add('running');
+      const bar = document.getElementById('megg-bar-' + egg.id);
+      bar.style.transition = 'width 1s linear';
+      egg.interval = setInterval(() => {
+        egg.remaining--;
+        document.getElementById('megg-cd-' + egg.id).textContent = formatMM_SS(Math.max(0, egg.remaining));
+        bar.style.width = ((1 - egg.remaining / egg.total) * 100) + '%';
+        if (egg.remaining <= 0) {
+          clearInterval(egg.interval); egg.interval = null; egg.done = true;
+          card.classList.remove('running'); card.classList.add('done');
+          document.getElementById('megg-done-' + egg.id).style.display = '';
+          playBeep(); vibrate();
+          if (multiEggs.every(e => e.done)) releaseWakeLock();
+        }
+      }, 1000);
+    });
+  }
+
+  function multiResetAll() {
+    haptic();
+    [...multiEggs].forEach(e => multiRemoveEgg(e.id));
   }
 
   // ── Init ───────────────────────────────────────────────────────────────────
