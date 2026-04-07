@@ -1201,7 +1201,10 @@
 
   function multiUpdateButtons() {
     const n = multiEggs.length;
-    document.getElementById('btnStartAll').style.display = n >= 1 ? '' : 'none';
+    const hasReady = multiEggs.some(e => e.type && !e.done && !e.interval);
+    const btnAll = document.getElementById('btnStartAll');
+    btnAll.style.display = n >= 1 ? '' : 'none';
+    btnAll.disabled = !hasReady;
     document.getElementById('btnResetAll').style.display = n >= 1 ? '' : 'none';
   }
 
@@ -1261,6 +1264,7 @@
     card.querySelectorAll('.megg-type-btn').forEach(b =>
       b.classList.toggle('active', b.dataset.type === type));
     multiCalc(egg);
+    multiUpdateButtons();
   }
 
   function multiSetPill(id, group, val) {
@@ -1272,6 +1276,7 @@
     card.querySelectorAll(`.megg-pill[data-group="${group}"]`).forEach(b =>
       b.classList.toggle('active', b.dataset.val === val));
     if (egg.type) multiCalc(egg);
+    multiUpdateButtons();
   }
 
   function multiCalc(egg) {
@@ -1302,6 +1307,7 @@
           card.classList.remove('running'); card.classList.add('done');
           document.getElementById('megg-done-' + egg.id).style.display = '';
           playBeep(); vibrate();
+          multiUpdateButtons();
           if (multiEggs.every(e => e.done)) releaseWakeLock();
         }
       }, 1000);
