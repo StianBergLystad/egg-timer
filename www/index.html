@@ -1327,10 +1327,20 @@
   refreshLabels();
   restoreState();   // resume any in-progress timer
 
-  // Pre-select default egg type so Start is enabled immediately
+  // Pre-select default egg type so Start is enabled immediately (no haptic on load)
   if (!currentType) {
-    const defaultBtn = document.querySelector('.egg-btn[data-type="smiling"]');
-    if (defaultBtn) selectType(defaultBtn);
+    currentType = 'smiling';
+    const secs = calcSeconds('smiling', currentSize, currentTemp);
+    totalSeconds = secs; remaining = secs;
+    document.querySelector('.egg-btn[data-type="smiling"]')?.classList.add('active');
+    stopTransitions(); setRingFraction(1);
+    bar.style.width = '0%';
+    updateDisplay(remaining); updateFormulaHint();
+    lbl.textContent = t('timer.ready');
+    adjustRow.classList.add('visible');
+    btnStart.disabled = false;
+    btnStart.textContent = t('btn.start');
+    updateAdjButtons();
   }
 
   // Dark mode
