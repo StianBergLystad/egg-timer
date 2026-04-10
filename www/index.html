@@ -1294,6 +1294,7 @@
   function multiStartAll() {
     haptic();
     unlockAudio();
+    if (!running && currentType && remaining > 0) startStop();
     const ready = multiEggs.filter(e => e.type && !e.done && !e.interval);
     if (!ready.length) return;
     acquireWakeLock();
